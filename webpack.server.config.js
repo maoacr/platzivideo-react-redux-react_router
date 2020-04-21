@@ -22,13 +22,15 @@ module.exports = (env) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'js/[name].js',
+      filename: 'ssr/[name].js',
       publicPath: "/",
       chunkFilename: 'js/[id].[chunkhash].js',
+      libraryTarget: 'commonjs2',
     },
     devServer: {
       port: 9000,
     },
+    target: 'node',
     module: {
       rules: [
         {
@@ -63,7 +65,7 @@ module.exports = (env) => {
             options: {
               limit: 10000,
               fallback: 'file-loader',
-              name: 'images/[name].[ext]',
+              name: 'images/[name].[hash].[ext]',
             }
           }
         },
